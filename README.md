@@ -8,7 +8,7 @@
 ## Cloning Repository
 
 ```shell
-git clone git@github.com:fadc80/imposter-test.git
+git clone https://github.com/fadc80/imposter-test.git
 ```
 
 ## Starting Imposter
