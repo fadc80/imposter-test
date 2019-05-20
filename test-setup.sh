@@ -1,18 +1,5 @@
 #!/bin/bash
 
-GROOVY_BIN=/opt/groovy-2.5.7/bin
-
-echo Checking Groovy installation...
-$GROOVY_BIN/groovyc --version > /dev/null 2>&1
-
-if [ $? -ne 0 ]; then	
-  echo Donwloading Groovy Compiler... 
-  curl -LO https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-2.5.7.zip 
-
-  echo Installing Groovy Compiler...
-  unzip -q apache-groovy-binary-2.5.7.zip -d /opt
-fi
-
 if [ "$#" -ne 0 ]; then
   for i in "$@"
   do
@@ -36,16 +23,15 @@ if [ "$#" -ne 0 ]; then
 
     mv $SERVICE_FOLDER/Service.template $SERVICE_FILE
     
+    sed -i "s/<!--SERVICE_LOWER-->/$SERVICE_LOWER/g" $SERVICE_FOLDER/data/default.json
+
     sed -i "s/<!--SERVICE_LOWER-->/$SERVICE_LOWER/g" $SERVICE_FILE
     sed -i "s/<!--SERVICE_UPPER-->/$SERVICE_UPPER/g" $SERVICE_FILE
-    
-    SERVICE_IMPORT="import services.$SERVICE_LOWER.$SERVICE_UPPER"
-    SERVICE_ADD="services.add(new $SERVICE_UPPER())"
+
+    SERVICE_IMPORT="$SERVICE_LOWER = shell.parse(new File(basePath() + \"\/$SERVICE_LOWER\/$SERVICE_UPPER.groovy\"))"
+    SERVICE_ADD="servicePool.add(\"$SERVICE_LOWER\", $SERVICE_LOWER, serviceList)"
 
     sed -i "/\/\/<!--IMPORT-->/ {N; s/\/\/<!--IMPORT-->\n/$SERVICE_IMPORT\n&/}" test-script.groovy
     sed -i "/\/\/<!--ADD-->/ {N; s/\/\/<!--ADD-->\n/$SERVICE_ADD\n&/}" test-script.groovy
   done
 fi
-
-echo Compiling Groovy Classes...
-$GROOVY_BIN/groovyc services/*.groovy services/**/*.groovy -d classes

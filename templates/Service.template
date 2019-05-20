@@ -1,18 +1,9 @@
-package services.<!--SERVICE_LOWER-->
-
-import services.Service
-
-class <!--SERVICE_UPPER--> extends Service {
-  def handle(script) {
-    script.with {
-      logger.info("Service handler: " + id())
-      respond {
-        withStatusCode(200) and()
-        withFile("services/<!--SERVICE_LOWER-->/data/default.json")
-      }
+def handle(global) {
+  global.with {
+    logger.info("Service handler: <!--SERVICE_LOWER-->")
+    respond {
+      withStatusCode(200) and()
+      withFile("services/<!--SERVICE_LOWER-->/data/default.json")
     }
-  }
-  def id() {
-    return "<!--SERVICE_LOWER-->"
   }
 }
