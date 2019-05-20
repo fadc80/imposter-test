@@ -23,14 +23,7 @@ cd imposter-test && docker run -ti -p 8443:8443 -v $(pwd):/opt/imposter/config f
 wget --server-response -qO - http://localhost:8443/services/service1
 wget --server-response -qO - http://localhost:8443/services/service2
 wget --server-response -qO - http://localhost:8443/services/service3
-```
-
->   HTTP/1.1 200 OK  
->  Content-Type: application/json  
->  Content-Length: 32  
-> {  
->  "message": "Hello World!"  
-> }  
+```  
 
 ## Adding New Mock Services
 
