@@ -1,0 +1,8 @@
+{
+  "plugin": "com.gatehill.imposter.plugin.rest.RestPluginImpl",
+  "path": "/services/*",
+  "response": {
+    "scriptFile": "test-script.groovy"
+  },
+  "contentType": "application/json"
+}
