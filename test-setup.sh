@@ -27,11 +27,5 @@ if [ "$#" -ne 0 ]; then
 
     sed -i "s/<!--SERVICE_LOWER-->/$SERVICE_LOWER/g" $SERVICE_FILE
     sed -i "s/<!--SERVICE_UPPER-->/$SERVICE_UPPER/g" $SERVICE_FILE
-
-    SERVICE_IMPORT="$SERVICE_LOWER = shell.parse(new File(basePath() + \"\/$SERVICE_LOWER\/$SERVICE_UPPER.groovy\"))"
-    SERVICE_ADD="servicePool.add(\"$SERVICE_LOWER\", $SERVICE_LOWER, serviceList)"
-
-    sed -i "/\/\/<!--IMPORT-->/ {N; s/\/\/<!--IMPORT-->\n/$SERVICE_IMPORT\n&/}" test-script.groovy
-    sed -i "/\/\/<!--ADD-->/ {N; s/\/\/<!--ADD-->\n/$SERVICE_ADD\n&/}" test-script.groovy
   done
 fi

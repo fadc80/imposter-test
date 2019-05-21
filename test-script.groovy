@@ -1,23 +1,35 @@
-GroovyShell shell = new GroovyShell();
+import groovy.io.FileType
 
-servicePool = shell.parse(new File(basePath() + "/ServicePool.groovy"))
+def services = [:]
 
-service1 = shell.parse(new File(basePath() + "/service1/Service1.groovy"))
-service2 = shell.parse(new File(basePath() + "/service2/Service2.groovy"))
-service3 = shell.parse(new File(basePath() + "/service3/Service3.groovy"))
-//<!--IMPORT-->
+// Loading service scripts
+new File(basePath()).eachDir() { 
+  dir -> dir.eachFile(FileType.FILES) { 
+    file -> services.put(dir.getName(), 
+      parse(file.getAbsolutePath()))
+  }
+}
 
-serviceList = [:]
+// Extracting service id
+def id = new URL(context.request.uri)
+  .getPath().split("/")[2]; 
 
-servicePool.add("service1", service1, serviceList)
-servicePool.add("service2", service2, serviceList)
-servicePool.add("service3", service3, serviceList)
-//<!--ADD-->
+// Dispatching request
+if (services.containsKey(id)) {
+  services.get(id).handle(this)
+} else {
+  logger.error("Unknown Service: " + id)
+  respond { 
+    withStatusCode(500) 
+  }
+}
 
-servicePool.dispatch(this, serviceList)
+def parse(path) {
+  return new GroovyShell().parse(new File(path))
+}
 
 def basePath() {
-  return "/opt/imposter/config/services/"
+  return "/opt/imposter/config/services"
 }
 
 
