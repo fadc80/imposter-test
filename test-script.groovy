@@ -31,5 +31,3 @@ def parse(path) {
 def basePath() {
   return "/opt/imposter/config/services"
 }
-
-

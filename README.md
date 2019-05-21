@@ -28,5 +28,5 @@ wget --server-response -qO - http://localhost:8443/services/service3
 ## Adding New Mock Services
 
 ```
-chmod +x test-setup.sh && ./test-setup.sh service4
+chmod +x template.sh && ./template.sh service4
 ```
