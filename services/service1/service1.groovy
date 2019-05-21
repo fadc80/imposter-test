@@ -1,5 +1,9 @@
-def handle(script) {
-  script.with {
+// Code generated from template
+def handle(global) {
+  global.with {
+    // Replace below code with your code. 
+    // Inside this block all Imposter 
+    // methods are availible.
     logger.info("Service handler: service1")
     respond {
       withStatusCode(200) and()
