@@ -29,4 +29,5 @@ do
   
   sed -i "s/<!--SERVICE-->/$SERVICE/g" $SERVICE_FILE   
   sed -i "s/<!--SERVICE-->/$SERVICE/g" $SERVICE_FOLDER/data/default.json
+  sed -i "s/<!--SERVICE-->/$SERVICE/g" $SERVICE_FOLDER/data/readme.txt
 done
