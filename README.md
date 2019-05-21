@@ -19,9 +19,16 @@ cd imposter-test && docker run -ti -p 8443:8443 -v $(pwd):/opt/imposter/config f
 
 ## Invoking Sample Mock Services
 
+**Sample service1**
 ```
 wget --server-response -qO - http://localhost:8443/services/service1
+```  
+**Sample service2**
+```
 wget --server-response -qO - http://localhost:8443/services/service2
+```  
+**Sample service3**
+```
 wget --server-response -qO - http://localhost:8443/services/service3
 ```  
 
