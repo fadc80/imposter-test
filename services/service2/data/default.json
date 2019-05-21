@@ -1,4 +1,1 @@
-{
-  "serviceId": "service2"
-  "message": "Hello World!"
-}
+{ "serviceId": "service2", "message": "Hello World!" }
