@@ -1,4 +1,4 @@
-// Code generated from template
+// Code generated from template.
 def handle(global) {
   global.with {
     // Replace below code with your code. 
