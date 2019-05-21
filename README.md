@@ -1,5 +1,7 @@
 # Imposter-Test
 
+Serving multiple mocks using a single [Imposter](https://github.com/outofcoffee/imposter) docker container.
+
 ## Requirements
 
 * Bash Shell
@@ -17,7 +19,7 @@ git clone https://github.com/fadc80/imposter-test.git
 cd imposter-test && docker run -ti -p 8443:8443 -v $(pwd):/opt/imposter/config fadc80/imposter-rest
 ```
 
-## Invoking Sample Mock Services
+## Invoking Sample Services
 
 **Sample service1** [[code here :eyes:]](services/service1/service1.groovy)
 ```
@@ -49,7 +51,7 @@ wget --server-response -qO - http://localhost:8443/services/service3
 >  Content-Length: 58  
 > { "serviceId": "service3", "message": "Hello World!" }
 
-## Adding New Mock Services
+## Adding New Services
 
 ```
 chmod +x template.sh && ./template.sh service4
