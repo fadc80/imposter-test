@@ -3,7 +3,7 @@ def handle(global) {
   global.with {
     // Replace below code with your code. 
     // Inside this block all Imposter 
-    // methods are availible.
+    // methods are available.
     logger.info("Service handler: service3")
     respond {
       withStatusCode(200) and()
