@@ -4,7 +4,7 @@ def services = [:]
 
 // Loading service scripts
 new File(basePath()).eachDir() { 
-  dir -> dir.eachFile(FileType.FILES) { 
+  dir -> dir.eachFileMatch(~/.*\.groovy/) { 
     file -> services.put(dir.getName(), 
       parse(file.getAbsolutePath()))
   }
