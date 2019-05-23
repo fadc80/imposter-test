@@ -10,13 +10,13 @@ Serving multiple mocks using a single [Imposter](https://github.com/outofcoffee/
 ## Cloning Repository
 
 ```shell
-git clone https://github.com/fadc80/imposter-test.git
+git clone https://github.com/fadc80/imposter-test.git && cd imposter-test
 ```
 
 ## Starting Imposter
 
 ```shell
-cd imposter-test && docker run -ti -p 8443:8443 -v $(pwd):/opt/imposter/config fadc80/imposter-rest
+docker run -ti -p 8443:8443 -v $(pwd):/opt/imposter/config fadc80/imposter-rest
 ```
 
 ## Invoking Sample Services
