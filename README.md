@@ -30,7 +30,7 @@ This project comes with three sample services:
 | **Service 3** | [code :eye:](services/service1/service3.groovy) | http://localhost:8443/services/service3 |
 
 
-For example, to call Sevice 1:
+For example, to call Service 1:
 
 ```
 wget --server-response -qO - http://localhost:8443/services/service1
