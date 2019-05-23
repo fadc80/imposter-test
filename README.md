@@ -44,7 +44,7 @@ wget --server-response -qO - http://localhost:8443/services/service1
 
 ## Adding New Services
 
-New services can be added using a [template](template/template.groovy):
+New services can be added using a [template](template/service.groovy):
 
 ```
 chmod +x template.sh && ./template.sh service4
