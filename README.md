@@ -23,11 +23,11 @@ cd imposter-test && docker run -ti -p 8443:8443 -v $(pwd):/opt/imposter/config f
 
 This project comes with three sample services:
 
-| Name          | URL                                     |
-|---------------|-----------------------------------------|
-| **Service 1** | http://localhost:8443/services/service1 |
-| **Service 2** | http://localhost:8443/services/service1 |
-| **Service 3** | http://localhost:8443/services/service3 |
+| Name          | Script                                          | URL                                     |
+|---------------|-------------------------------------------------|-----------------------------------------|
+| **Service 1** | [code :eye:](services/service1/service1.groovy) | http://localhost:8443/services/service1 |
+| **Service 2** | [code :eye:](services/service2/service2.groovy) | http://localhost:8443/services/service2 |
+| **Service 3** | [code :eye:](services/service1/service3.groovy) | http://localhost:8443/services/service3 |
 
 
 For example, to call Sevice 1:
@@ -44,7 +44,7 @@ wget --server-response -qO - http://localhost:8443/services/service1
 
 ## Adding New Services
 
-New services can be added using a [template](template/service.groovy):
+New services can be added using a template [script](template/service.groovy) and [data](template/data/default.json):
 
 ```
 chmod +x template.sh && ./template.sh service4
